@@ -1,0 +1,130 @@
+:root{
+    --primary-color: #e073e0;
+    --primary-hover: #d062d0;
+    --primary-active: #c051c0;
+    --background-color: #202020 ;
+    --card-background: #3300d5 ;
+    --card-flipped: #e92c91;
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*hace que el padding margion y borde se cuenten hacia dentro d ela casa */
+}
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--background-color); /* RR GG BB (prmer digito es el tono y el segundo es la saturacion va de 0-9 y de A-F) */
+    color: #fff;
+}
+/* para llamar las claces se pone .(nombre de clae){ y propiedad para la clase) */
+.resaltar-palabra{
+    color: #fff000;    
+}
+
+.container {
+    text-align: center;
+    max-width: 600px;   
+    margin: 0 auto; 
+    padding: 1.25em;
+}
+h1.title {
+    margin-bottom: 1.25em;
+}
+
+.game-info {
+    
+    display: flex;
+    margin-bottom: 1.25em;
+    gap: 0.8rem;
+}
+.game-info span {
+    
+     display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    /*flex: 1;
+    text-align: center;*/
+
+}
+.start-stop-btn {
+    background-color: var(--primary-color);
+    border-radius: 1em ;
+    color: #fff;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    font-size: 1rem;
+    margin: 1rem 1px;
+    cursor: pointer; /* cuando se pase encima e ponga la mano*/ 
+    transition: background-color 0.3s ease;
+}
+
+.start-stop-btn:hover {
+    background-color: var(--primary-hover);
+}
+.start-stop-btn:active {
+    background-color: var(--primary-active);
+}
+
+.game-board {
+    
+    display: grid; /* cuadricula*/
+    grid-template-columns: repeat(4,1fr);   
+    gap: 0.625em;
+    max-width: 600px;   
+    margin: 0 auto;  
+    animation: fadeIn 0.5s ease-in-out;
+}
+.card {
+    aspect-ratio:3/4;
+    background-color: var(--card-background); 
+    display: flex;
+    justify-content: center;    
+    align-items: center;    
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    border-radius: 1em;
+}
+.card.flipped {
+    transform: rotateY(180deg); /* rotar 180 grados*/
+    background-color: var(--card-flipped) ; 
+    font-size: 2rem;
+}
+.hidden {
+    display: none;
+}
+
+.game-board.fade-out{
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@media( max-width: 600px){
+    .game-board{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {    
+        opacity: 0;
+    }
+}
